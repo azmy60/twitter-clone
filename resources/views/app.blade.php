@@ -16,6 +16,20 @@
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
         @inertiaHead
+        @env ('local')
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script>
+                tailwind.config = {
+                    theme: {
+                        extend: {
+                            fontFamily: {
+                                sans: ['IBM Plex Sans', ...tailwind.defaultTheme.fontFamily.sans],
+                            },
+                        },
+                    },
+                }
+            </script>
+        @endenv
     </head>
     <body class="font-sans antialiased">
         @inertia
