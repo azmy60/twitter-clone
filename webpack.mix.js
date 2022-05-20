@@ -11,13 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').vue()
+mix.ts('resources/ts/app.ts', 'public/js').vue()
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
     ])
     .alias({
-        '@': 'resources/js',
+        '@': 'resources/ts',
     });
 
 if (mix.inProduction()) {

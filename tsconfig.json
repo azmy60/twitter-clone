@@ -1,0 +1,19 @@
+{
+    "exclude": ["node_modules"],
+    "include": ["resources/ts/**/*"],
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "strict": true,
+        "jsx": "preserve",
+        "esModuleInterop": true,
+        "moduleResolution": "Node",
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["resources/ts/*"]
+        }
+    }
+}
