@@ -31,7 +31,7 @@
             </script>
         @endenv
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-black text-neutral-200">
         @inertia
 
         @env ('local')
