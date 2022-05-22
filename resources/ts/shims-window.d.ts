@@ -7,5 +7,5 @@ declare global {
         axios: AxiosInstance;
     }
 
-    const route = typeof _route;
+    const route = _route;
 }
