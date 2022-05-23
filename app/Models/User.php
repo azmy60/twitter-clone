@@ -58,4 +58,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    static function whereIdentifier($identifier)
+    {
+        return static::where('email', $identifier)
+            ->orWhere('username', $identifier);
+    }
 }

@@ -22,8 +22,45 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
 
+        $response = $this->postJson('/api/login/onboarding', [
+            'user_identifier' => $user->email,
+        ]);
+
+        $response->assertJson([
+            'status' => 'success',
+        ]);
+    }
+
+    public function test_users_can_not_onboard_with_invalid_identifier()
+    {
+        $response = $this->postJson('/api/login/onboarding', [
+            'user_identifier' => 'notexist',
+        ]);
+
+        $response->assertJson([
+            'error' => 'Sorry, we could not find your account.',
+        ]);
+    }
+
+    public function test_users_can_authenticate_with_email()
+    {
+        $user = User::factory()->create();
+
         $response = $this->post('/login', [
-            'email' => $user->email,
+            'user_identifier' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertRedirect(RouteServiceProvider::HOME);
+    }
+
+    public function test_users_can_authenticate_with_username()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->post('/login', [
+            'user_identifier' => $user->username,
             'password' => 'password',
         ]);
 
@@ -36,7 +73,7 @@ class AuthenticationTest extends TestCase
         $user = User::factory()->create();
 
         $this->post('/login', [
-            'email' => $user->email,
+            'user_identifier' => $user->email,
             'password' => 'wrong-password',
         ]);
 
