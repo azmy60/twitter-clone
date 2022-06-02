@@ -1,6 +1,11 @@
 {
-    "exclude": ["node_modules"],
-    "include": ["resources/ts/**/*"],
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "resources/js/**/*",
+        "cypress/**/*"
+    ],
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
@@ -13,7 +18,9 @@
         "sourceMap": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["resources/ts/*"]
+            "@/*": [
+                "resources/js/*"
+            ]
         }
     }
 }
