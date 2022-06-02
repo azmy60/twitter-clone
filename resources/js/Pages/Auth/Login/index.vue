@@ -10,14 +10,20 @@ const action = ref<"EnterUserIdentifier" | "EnterPassword">(
     "EnterUserIdentifier"
 );
 
+const errorMessage = ref("");
+
 function nextFlow() {
     action.value = "EnterPassword";
+}
+
+function showErrorMessage(error: string) {
+    errorMessage.value = error;
 }
 </script>
 
 <template>
     <Head title="Twitter" />
-    <main class="h-screen flex flex-col">
+    <main class="h-screen flex flex-col relative">
         <div class="grid grid-cols-3 p-2">
             <Link href="/" class="p-2 hover:bg-neutral-900 w-min rounded-full">
                 <XIcon class="w-5 h-5" />
@@ -27,7 +33,11 @@ function nextFlow() {
         <UserIdentifierForm
             v-if="action === 'EnterUserIdentifier'"
             :onSuccess="nextFlow"
+            :onFail="showErrorMessage"
         />
         <PasswordForm v-if="action === 'EnterPassword'" />
+        <div class="absolute bottom-0 left-2" data-testid="errorMessage">
+            {{ errorMessage }}
+        </div>
     </main>
 </template>

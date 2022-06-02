@@ -7,6 +7,7 @@ import { userIdentifier } from "./state";
 
 const props = defineProps<{
     onSuccess: () => void;
+    onFail: (error: string) => void;
 }>();
 
 function submit() {
@@ -18,6 +19,9 @@ function submit() {
             if (response.data.status === "success") {
                 props.onSuccess();
             }
+        })
+        .catch((error) => {
+            props.onFail(error.response.data.error);
         });
 }
 </script>
@@ -33,11 +37,13 @@ function submit() {
             name="user_identifier"
             placeholder="Email or username"
             v-model="userIdentifier"
+            data-testid="userIdentifier"
         />
         <AppButton
             type="submit"
             class="flex justify-center py-2.5 px-4 rounded-full text-sm font-bold bg-neutral-100 text-neutral-900"
             size="md"
+            data-testid="next"
         >
             Next
         </AppButton>

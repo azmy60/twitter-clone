@@ -35,6 +35,7 @@ function submit() {
                 name="password"
                 placeholder="Password"
                 v-model="password"
+                data-testid="password"
             />
             <AppLink :href="route('password.request')" class="text-[13px] pl-2">
                 Forgot password?
@@ -46,6 +47,7 @@ function submit() {
                 class="bg-neutral-100 text-neutral-900"
                 size="lg"
                 :disabled="password.length === 0"
+                data-testid="logIn"
             >
                 Log in
             </AppButton>
