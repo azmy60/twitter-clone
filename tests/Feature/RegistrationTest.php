@@ -45,7 +45,6 @@ class RegistrationTest extends TestCase
             'email' => 'test@example.com',
             'username' => 'testuser',
             'password' => 'password',
-            'password_confirmation' => 'password',
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
         ]);
 
