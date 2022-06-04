@@ -5,7 +5,7 @@ Laravel 9 + Inertia.js + Vue 3 + TailwindCSS
 ## Features
 
 - [x] Two step Login
-- [ ] Multi step Registration
+- [x] Multi step Registration
 - [ ] Home Timeline & User Timeline
 - [ ] Tweets
 - [ ] Retweets
