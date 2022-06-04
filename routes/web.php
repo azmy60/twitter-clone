@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,6 +25,14 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::post('/register/unique-email', function (Request $request) {
+    abort_if(User::whereIdentifier($request->email)->exists(), 400);
+})->name('register.unique-email');
+
+Route::post('/register/unique-username', function (Request $request) {
+    abort_if(User::whereIdentifier($request->username)->exists(), 400);
+})->name('register.unique-username');
 
 Route::middleware([
     'auth:sanctum',

@@ -327,6 +327,24 @@
       "POST"
     ]
   },
+  "register.unique-email": {
+    "name": "register.unique-email",
+    "domain": null,
+    "action": "Closure",
+    "uri": "register/unique-email",
+    "method": [
+      "POST"
+    ]
+  },
+  "register.unique-username": {
+    "name": "register.unique-username",
+    "domain": null,
+    "action": "Closure",
+    "uri": "register/unique-username",
+    "method": [
+      "POST"
+    ]
+  },
   "home": {
     "name": "home",
     "domain": null,

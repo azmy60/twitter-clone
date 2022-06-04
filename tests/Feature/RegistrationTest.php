@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Fortify\Features;
@@ -32,6 +33,26 @@ class RegistrationTest extends TestCase
         $response = $this->get('/register');
 
         $response->assertStatus(404);
+    }
+
+    public function test_can_check_unique_email_address_in_registration_screen()
+    {
+        $user = User::factory()->create();
+        $response = $this->post('/register/unique-email', [
+            'email' => $user->email,
+        ]);
+
+        $response->assertStatus(400);
+    }
+
+    public function test_can_check_unique_username_in_registration_screen()
+    {
+        $user = User::factory()->create();
+        $response = $this->post('/register/unique-username', [
+            'username' => $user->username,
+        ]);
+
+        $response->assertStatus(400);
     }
 
     public function test_new_users_can_register()
