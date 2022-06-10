@@ -46,3 +46,14 @@ Route::middleware([
         ]);
     })->name('home');
 });
+
+Route::get('/{username}', function ($username) {
+    $user = User::whereIdentifier($username)->first();
+
+    abort_unless($user, 404);
+
+    return Inertia::render('UserProfile', [
+        'user' => $user,
+        'tweets' => $user->tweets,
+    ]);
+});

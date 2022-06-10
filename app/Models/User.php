@@ -55,4 +55,9 @@ class User extends Authenticatable
         return static::where('email', $identifier)
             ->orWhere('username', $identifier);
     }
+
+    public function tweets()
+    {
+        return $this->hasMany(Tweet::class);
+    }
 }
