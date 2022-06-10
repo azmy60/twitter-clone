@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tweet;
 use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
@@ -40,6 +41,8 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/home', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Home', [
+            'tweets' => Tweet::all(),
+        ]);
     })->name('home');
 });

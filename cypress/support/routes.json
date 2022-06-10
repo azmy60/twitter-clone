@@ -86,7 +86,7 @@
     "name": null,
     "domain": null,
     "action": "Closure",
-    "uri": "/",
+    "uri": "{username}",
     "method": [
       "GET",
       "HEAD"
