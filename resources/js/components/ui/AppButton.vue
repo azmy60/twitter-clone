@@ -8,7 +8,7 @@ const TAGS = {
 };
 
 defineProps<{
-    size: "md" | "lg";
+    size: "md" | "lg" | "sm";
     type: keyof typeof TAGS;
     href?: string;
 }>();
@@ -20,6 +20,7 @@ defineProps<{
         :href="href"
         :type="type !== 'link' && type"
         :class="{
+            'text-[13px] py-1.5': size === 'sm',
             'text-sm py-2.5': size === 'md',
             'text-md py-3': size === 'lg',
         }"
