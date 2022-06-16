@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Tweet;
 use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
@@ -35,22 +34,12 @@ Route::post('/register/unique-username', function (Request $request) {
     abort_if(User::whereIdentifier($request->username)->exists(), 400);
 })->name('register.unique-username');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/home', function () {
-        return Inertia::render('Home', [
-            'tweets' => Tweet::all(),
-        ]);
-    })->name('home');
-});
+require __DIR__ . '/tweets.php';
 
 Route::get('/{username}', function ($username) {
     $user = User::whereIdentifier($username)->first();
 
-    abort_unless($user, 404);
+    abort_unless($user, 404, 'This user does not exist');
 
     return Inertia::render('UserProfile', [
         'user' => $user,

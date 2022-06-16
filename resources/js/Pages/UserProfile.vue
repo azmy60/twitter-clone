@@ -17,7 +17,7 @@ defineProps<{
     <MainLayout>
         <div class="flex items-center pl-2.5 pr-4 py-0.5">
             <Link
-                :href="route('home')"
+                :href="route('tweets.index')"
                 class="p-2.5 rounded-full hover:bg-neutral-900"
             >
                 <ArrowLeftIcon class="w-4 h-4" />

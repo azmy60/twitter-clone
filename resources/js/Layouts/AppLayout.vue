@@ -46,7 +46,7 @@ const logout = () => {
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('home')">
+                                <Link :href="route('tweets.index')">
                                     <JetApplicationMark
                                         class="block h-9 w-auto"
                                     />
@@ -58,7 +58,7 @@ const logout = () => {
                                 class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
                             >
                                 <JetNavLink
-                                    :href="route('home')"
+                                    :href="route('tweets.index')"
                                     :active="route().current('home')"
                                 >
                                     Dashboard
@@ -340,7 +340,7 @@ const logout = () => {
                 >
                     <div class="pt-2 pb-3 space-y-1">
                         <JetResponsiveNavLink
-                            :href="route('home')"
+                            :href="route('tweets.index')"
                             :active="route().current('home')"
                         >
                             Dashboard

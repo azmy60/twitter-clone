@@ -3,6 +3,7 @@ type Tweet = {
     text: string;
     created_at: string;
     user: User;
+    can_be_deleted: boolean;
 };
 
 type User = {
