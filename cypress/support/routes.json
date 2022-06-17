@@ -345,11 +345,49 @@
       "POST"
     ]
   },
-  "home": {
-    "name": "home",
+  "tweets.index": {
+    "name": "tweets.index",
     "domain": null,
-    "action": "Closure",
+    "action": "App\\Http\\Controllers\\TweetController@index",
     "uri": "home",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "tweets.create": {
+    "name": "tweets.create",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TweetController@create",
+    "uri": "compose/tweet",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "tweets.store": {
+    "name": "tweets.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TweetController@store",
+    "uri": "tweets",
+    "method": [
+      "POST"
+    ]
+  },
+  "tweets.destroy": {
+    "name": "tweets.destroy",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TweetController@destroy",
+    "uri": "tweets/{tweet}",
+    "method": [
+      "DELETE"
+    ]
+  },
+  "tweets.show": {
+    "name": "tweets.show",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TweetController@show",
+    "uri": "{user}/status/{tweet}",
     "method": [
       "GET",
       "HEAD"
