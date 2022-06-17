@@ -27,7 +27,7 @@ defineEmits<{
                 Delete
             </AppButton>
             <AppButton
-                @click="$emit('delete')"
+                @click="$emit('cancel')"
                 type="button"
                 size="md"
                 class="mt-3 border border-slate-500"
