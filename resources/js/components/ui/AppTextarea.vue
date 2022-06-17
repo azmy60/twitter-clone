@@ -25,6 +25,14 @@ function onPaste(event: ClipboardEvent) {
 
     event.preventDefault();
 }
+
+function reset() {
+    editableEl.value!.innerText = "";
+}
+
+defineExpose({
+    reset,
+});
 </script>
 
 <template>

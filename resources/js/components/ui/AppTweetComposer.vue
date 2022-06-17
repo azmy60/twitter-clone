@@ -14,6 +14,7 @@ defineProps<{
 const user = computed(() => usePage().props.value.user as User);
 
 const text = ref("");
+const textarea = ref<typeof AppTextarea | null>(null);
 
 const invalid = computed(
     () => text.value.length === 0 || text.value.length > 280
@@ -22,7 +23,16 @@ const invalid = computed(
 function onSubmit() {
     if (invalid.value) return;
 
-    Inertia.post(route("tweets.store"), { text: text.value });
+    Inertia.post(
+        route("tweets.store"),
+        { text: text.value },
+        {
+            onSuccess: () => {
+                text.value = "";
+                textarea.value!.reset();
+            },
+        }
+    );
 }
 </script>
 
@@ -41,7 +51,9 @@ function onSubmit() {
                 <div class="py-3.5 max-w-0 min-w-full">
                     <AppTextarea
                         v-model="text"
+                        ref="textarea"
                         class="empty:before:content-['What\'s_happening?']"
+                        data-testid="tweet-compose-textarea"
                     />
                 </div>
                 <div class="flex justify-end mt-1">
@@ -55,6 +67,7 @@ function onSubmit() {
                             @click="onSubmit"
                             :disabled="invalid"
                             class="bg-sky-500 text-white disabled:bg-sky-500 disabled:opacity-70"
+                            data-testid="tweet-compose-btn"
                         >
                             Tweet
                         </AppButton>
