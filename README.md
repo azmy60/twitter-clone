@@ -7,7 +7,7 @@ Laravel 9 + Inertia.js + Vue 3 + TailwindCSS
 - [x] Two step Login
 - [x] Multi step Registration
 - [x] Home Timeline & User Timeline
-- [X] Tweets
+- [x] Tweets
 - [ ] Replies
 - [ ] Follows & Likes
 - [ ] Retweets
