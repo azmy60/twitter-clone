@@ -18,7 +18,7 @@ function confirmDelete() {
 </script>
 
 <template>
-    <div class="relative ml-auto" @blur="isOpened = false">
+    <div class="relative ml-auto">
         <button
             @click.stop="isOpened = !isOpened"
             class="group relative grid place-content-center"
@@ -30,7 +30,7 @@ function confirmDelete() {
             <DotsHorizontalIcon class="z-10 w-4 h-4 group-hover:text-sky-500" />
         </button>
         <div
-            class="right-0 absolute bg-black rounded-md ring-white shadow-[0_0_18px] shadow-neutral-500"
+            class="z-20 top-0 right-0 absolute bg-black rounded-md ring-white shadow-[0_0_18px] shadow-neutral-500"
             v-show="isOpened"
         >
             <button
@@ -44,6 +44,11 @@ function confirmDelete() {
             </button>
         </div>
     </div>
+    <div
+        class="absolute inset-0 z-[19] cursor-default"
+        v-show="isOpened"
+        @click.stop="isOpened = false"
+    ></div>
     <Teleport to="body">
         <TweetDeleteModal
             v-if="isDeleteModalOpened"
