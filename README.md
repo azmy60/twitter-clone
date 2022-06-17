@@ -2,6 +2,8 @@
 
 Laravel 9 + Inertia.js + Vue 3 + TailwindCSS
 
+![Screenshot 2022-06-18 at 02-28-17 Twitter  It's what's happening _ Twitter](https://user-images.githubusercontent.com/38707148/174389918-ab270f6b-8f54-4d12-b2e8-4f0c439f26b1.png)
+
 ## Features
 
 - [x] Two step Login
