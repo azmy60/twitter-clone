@@ -22,7 +22,7 @@ onUnmounted(() => {
 
 <template>
     <Teleport to="body">
-        <div class="absolute inset-0 bg-black">
+        <div class="absolute inset-0 bg-black z-10">
             <div class="flex justify-between px-4 pt-2" id="compose-modal-top">
                 <Link
                     :href="route('tweets.index')"

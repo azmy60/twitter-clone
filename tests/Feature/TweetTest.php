@@ -35,6 +35,17 @@ class TweetTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_tweet_screen_can_be_rendered()
+    {
+        $tweet = Tweet::factory()->create([
+            'user_id' => $this->user->id,
+        ]);
+
+        $response = $this->get('/' . $this->user->username . '/status/' . $tweet->id);
+
+        $response->assertStatus(200);
+    }
+
     public function test_user_can_post_tweets()
     {
         $this->post('/tweets', [

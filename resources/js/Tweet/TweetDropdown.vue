@@ -20,7 +20,7 @@ function confirmDelete() {
 <template>
     <div class="relative ml-auto" @blur="isOpened = false">
         <button
-            @click="isOpened = !isOpened"
+            @click.stop="isOpened = !isOpened"
             class="group relative grid place-content-center"
         >
             <div

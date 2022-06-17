@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTweetRequest;
 use App\Models\Tweet;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -22,7 +23,6 @@ class TweetController extends Controller
      */
     public function index()
     {
-        // dd('hi');
         return Inertia::render('Home', [
             'tweets' => Tweet::all(),
         ]);
@@ -58,12 +58,17 @@ class TweetController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  \App\Models\User  $user
      * @param  \App\Models\Tweet  $tweet
      * @return \Illuminate\Http\Response
      */
-    public function show(Tweet $tweet)
+    public function show(User $user, Tweet $tweet)
     {
-        //
+        abort_unless($tweet->user_id === $user->id, 404, 'This tweet does not exists');
+
+        return Inertia::render('Tweet/TweetPage', [
+            'tweet' => $tweet,
+        ]);
     }
 
     /**

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Head, Link } from "@inertiajs/inertia-vue3";
-import { ArrowLeftIcon } from "@heroicons/vue/solid";
+import { Head } from "@inertiajs/inertia-vue3";
 import MainLayout from "@/Layouts/MainLayout.vue";
 import AppTimeline from "@/components/ui/AppTimeline.vue";
 import AppProfilePicture from "@/components/ui/AppProfilePicture.vue";
 import AppHorizontalSeparator from "@/components/ui/AppHorizontalSeparator.vue";
+import TopBar from "@/components/ui/TopBar.vue";
 
 defineProps<{
     user: User;
@@ -15,20 +15,10 @@ defineProps<{
 <template>
     <Head title="Name (@username) / Twitter" />
     <MainLayout>
-        <div class="flex items-center pl-2.5 pr-4 py-0.5">
-            <Link
-                :href="route('tweets.index')"
-                class="p-2.5 rounded-full hover:bg-neutral-900"
-            >
-                <ArrowLeftIcon class="w-4 h-4" />
-            </Link>
-            <div class="ml-7">
-                <div class="text-lg font-bold">{{ user.name }}</div>
-                <div class="text-sm text-neutral-500">
-                    {{ tweets.length }} Tweets
-                </div>
-            </div>
-        </div>
+        <TopBar :linkToGoBack="route('tweets.index')">
+            <template #title>{{ user.name }}</template>
+            <template #subtitle>{{ tweets.length }} Tweets</template>
+        </TopBar>
         <div class="relative mb-14">
             <div class="w-full h-32 bg-neutral-800">
                 <!-- banner -->

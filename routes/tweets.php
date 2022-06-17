@@ -17,3 +17,6 @@ Route::middleware([
     Route::resource('tweets', TweetController::class)
         ->only(['store', 'destroy']);
 });
+
+Route::get('/{user:username}/status/{tweet}', [TweetController::class, 'show'])
+    ->name('tweets.show');
