@@ -29,7 +29,7 @@ function onSubmit() {
         {
             onSuccess: () => {
                 text.value = "";
-                textarea.value!.reset();
+                textarea.value?.reset && textarea.value.reset();
             },
         }
     );

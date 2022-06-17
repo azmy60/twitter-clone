@@ -22,6 +22,7 @@ function confirmDelete() {
         <button
             @click.stop="isOpened = !isOpened"
             class="group relative grid place-content-center"
+            data-testid="menu-btn"
         >
             <div
                 class="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mx-auto absolute rounded-full w-9 h-9 group-hover:bg-slate-900"
@@ -36,6 +37,7 @@ function confirmDelete() {
                 v-if="tweet.can_be_deleted"
                 @click="isDeleteModalOpened = true"
                 class="flex p-4 gap-3 hover:bg-neutral-900"
+                data-testid="menu-delete-btn"
             >
                 <TrashIcon class="w-5 h-5 text-red-700" />
                 <span class="text-red-600">Delete</span>

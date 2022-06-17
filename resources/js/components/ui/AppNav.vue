@@ -33,6 +33,7 @@ import AppProfilePicture from "@/components/ui/AppProfilePicture.vue";
             <Link
                 :href="route('tweets.create')"
                 class="mt-2 rounded-full p-2.5 w-12 h-12 bg-sky-500 text-white"
+                data-testid="nav-open-tweet-modal"
             >
                 <PencilIcon />
             </Link>

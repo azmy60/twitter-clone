@@ -23,6 +23,7 @@ defineEmits<{
                 type="button"
                 size="md"
                 class="bg-red-600 mt-6"
+                data-testid="modal-delete-btn"
             >
                 Delete
             </AppButton>
