@@ -22,9 +22,10 @@ import { Head } from "@inertiajs/inertia-vue3";
                 </h2>
                 <AppButton
                     :href="route('register')"
-                    class="w-72 bg-sky-500 text-white"
+                    class="w-72"
                     type="link"
                     size="md"
+                    variant="solid-primary"
                 >
                     Sign up with email
                 </AppButton>
@@ -32,9 +33,10 @@ import { Head } from "@inertiajs/inertia-vue3";
                     <p class="font-bold">Already have an account?</p>
                     <AppButton
                         :href="route('login')"
-                        class="w-72 mt-3 bg-transparent text-sky-400 border border-slate-600"
+                        class="w-72 mt-3"
                         type="link"
                         size="md"
+                        variant="outline-primary"
                     >
                         Sign in
                     </AppButton>

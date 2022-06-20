@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import AppProfilePicture from "@/components/ui/AppProfilePicture.vue";
+import LinkedProfilePicture from "@/components/ui/LinkedProfilePicture.vue";
 import AppTextarea from "@/components/ui/AppTextarea.vue";
 import AppButton from "@/components/ui/AppButton.vue";
 import TweetLayout from "@/Layouts/TweetLayout.vue";
-import { Link, usePage } from "@inertiajs/inertia-vue3";
 import { computed, ref } from "vue";
 import { Inertia } from "@inertiajs/inertia";
+import { user } from "@/inertia";
 
 defineProps<{
     teleportTweetTo?: string;
 }>();
-
-const user = computed(() => usePage().props.value.user as User);
 
 const text = ref("");
 const textarea = ref<typeof AppTextarea | null>(null);
@@ -39,12 +37,7 @@ function onSubmit() {
 <template>
     <TweetLayout>
         <template #side>
-            <Link :href="`/${user.username}`">
-                <AppProfilePicture
-                    class="w-12 h-12"
-                    :src="user.profile_photo_url"
-                />
-            </Link>
+            <LinkedProfilePicture :user="user" />
         </template>
         <div class="grow">
             <form @submit.prevent="onSubmit">
@@ -64,9 +57,9 @@ function onSubmit() {
                         <AppButton
                             size="sm"
                             type="button"
+                            variant="solid-primary"
                             @click="onSubmit"
                             :disabled="invalid"
-                            class="bg-sky-500 text-white disabled:bg-sky-500 disabled:opacity-70"
                             data-testid="tweet-compose-btn"
                         >
                             Tweet

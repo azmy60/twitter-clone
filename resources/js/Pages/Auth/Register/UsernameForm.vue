@@ -63,8 +63,8 @@ const validation = useVuelidate(rules, form);
         <div class="flex flex-col grow justify-end">
             <AppButton
                 type="submit"
-                class="bg-sky-500 text-white"
                 size="lg"
+                variant="solid-primary"
                 data-testid="signup"
                 :disabled="validation.$invalid"
             >

@@ -44,7 +44,7 @@ function submit() {
         <div class="flex flex-col justify-end grow gap-6">
             <AppButton
                 type="submit"
-                class="bg-neutral-100 text-neutral-900"
+                variant="solid-secondary"
                 size="lg"
                 :disabled="password.length === 0"
                 data-testid="logIn"

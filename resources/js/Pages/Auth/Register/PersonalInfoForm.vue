@@ -75,8 +75,8 @@ function onDateInputChange(dateString: string) {
         <div class="flex flex-col grow justify-end">
             <AppButton
                 type="submit"
-                class="bg-neutral-100 text-neutral-900"
                 size="lg"
+                variant="solid-secondary"
                 data-testid="next"
                 :disabled="validation.$invalid"
             >

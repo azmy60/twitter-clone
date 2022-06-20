@@ -41,8 +41,9 @@ function submit() {
         />
         <AppButton
             type="submit"
-            class="flex justify-center py-2.5 px-4 rounded-full text-sm font-bold bg-neutral-100 text-neutral-900"
+            class="flex justify-center py-2.5 px-4 rounded-full text-sm font-bold"
             size="md"
+            variant="solid-secondary"
             data-testid="next"
         >
             Next
@@ -50,7 +51,7 @@ function submit() {
         <AppButton
             type="link"
             :href="route('password.request')"
-            class="border border-slate-500"
+            variant="outline-secondary"
             size="md"
         >
             Forgot password?

@@ -22,7 +22,8 @@ defineEmits<{
                 @click="$emit('delete')"
                 type="button"
                 size="md"
-                class="bg-red-600 mt-6"
+                variant="solid-danger"
+                class="mt-6"
                 data-testid="modal-delete-btn"
             >
                 Delete
@@ -31,7 +32,8 @@ defineEmits<{
                 @click="$emit('cancel')"
                 type="button"
                 size="md"
-                class="mt-3 border border-slate-500"
+                variant="outline-secondary"
+                class="mt-3"
             >
                 Cancel
             </AppButton>
