@@ -7,16 +7,18 @@ import AppHorizontalSeparator from "@/components/ui/AppHorizontalSeparator.vue";
 import TopBar from "@/components/ui/TopBar.vue";
 
 defineProps<{
-    user: User;
+    user_profile: User;
     tweets: Tweet[];
 }>();
 </script>
 
 <template>
-    <Head title="Name (@username) / Twitter" />
+    <Head
+        :title="`${user_profile.name} (@${user_profile.username}) / Twitter`"
+    />
     <MainLayout>
-        <TopBar :linkToGoBack="route('tweets.index')">
-            <template #title>{{ user.name }}</template>
+        <TopBar>
+            <template #title>{{ user_profile.name }}</template>
             <template #subtitle>{{ tweets.length }} Tweets</template>
         </TopBar>
         <div class="relative mb-14">
@@ -24,13 +26,15 @@ defineProps<{
                 <!-- banner -->
             </div>
             <AppProfilePicture
-                :src="user.profile_photo_url"
+                :src="user_profile.profile_photo_url"
                 class="absolute left-3 -bottom-10 border-2 border-black w-20 h-20 rounded-full bg-neutral-400"
             />
         </div>
         <div class="px-4">
-            <h2 class="text-xl font-bold">{{ user.name }}</h2>
-            <h3 class="text-sm text-neutral-500">@{{ user.username }}</h3>
+            <h2 class="text-xl font-bold">{{ user_profile.name }}</h2>
+            <h3 class="text-sm text-neutral-500">
+                @{{ user_profile.username }}
+            </h3>
         </div>
         <AppHorizontalSeparator class="mt-4" />
         <AppTimeline :tweets="tweets" />

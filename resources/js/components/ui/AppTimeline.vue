@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Link } from "@inertiajs/inertia-vue3";
 import AppHorizontalSeparator from "@/components/ui/AppHorizontalSeparator.vue";
 import AppTweet from "@/components/ui/AppTweet.vue";
 import { Inertia } from "@inertiajs/inertia";
@@ -20,7 +19,12 @@ function onClickTweet(tweet: Tweet) {
 
 <template>
     <template v-for="tweet in tweets" :key="tweet.id">
-        <AppTweet @click="onClickTweet(tweet)" :tweet="tweet" />
+        <AppTweet
+            tabindex="0"
+            @keydown.enter="onClickTweet(tweet)"
+            @click="onClickTweet(tweet)"
+            :tweet="tweet"
+        />
         <AppHorizontalSeparator></AppHorizontalSeparator>
     </template>
 </template>

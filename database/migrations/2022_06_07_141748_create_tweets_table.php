@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('tweets', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained();
+            $table->foreignId('parent_tweet_id')->nullable();
             $table->string('text');
             $table->timestamps();
         });

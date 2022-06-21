@@ -25,6 +25,7 @@ import AppProfilePicture from "@/components/ui/AppProfilePicture.vue";
                 <HomeIcon />
             </Link>
             <Link
+                v-if="user"
                 :href="`/${user.username}`"
                 class="rounded-full p-2.5 w-12 h-12 hover:bg-neutral-900"
             >
@@ -42,7 +43,7 @@ import AppProfilePicture from "@/components/ui/AppProfilePicture.vue";
             <div class="p-2.5 rounded-full hover:bg-neutral-900">
                 <AppProfilePicture
                     class="w-8 h-8"
-                    :src="user.profile_photo_url"
+                    :src="user?.profile_photo_url"
                 />
             </div>
         </div>

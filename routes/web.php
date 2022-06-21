@@ -1,8 +1,10 @@
 <?php
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -18,6 +20,10 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect(RouteServiceProvider::HOME);
+    }
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -42,7 +48,7 @@ Route::get('/{username}', function ($username) {
     abort_unless($user, 404, 'This user does not exist');
 
     return Inertia::render('UserProfile', [
-        'user' => $user,
+        'user_profile' => $user,
         'tweets' => $user->tweets,
     ]);
 });

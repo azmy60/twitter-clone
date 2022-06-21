@@ -18,6 +18,10 @@ onUnmounted(() => {
     mounted.value = false;
     document.body.style.overflow = bodyOverflow;
 });
+
+function goBack() {
+    window.history.back();
+}
 </script>
 
 <template>
@@ -31,12 +35,12 @@ onUnmounted(() => {
                 id="compose-modal-top"
                 data-testid="tweet-compose-modal-top-bar"
             >
-                <Link
-                    :href="route('tweets.index')"
+                <button
+                    @click="goBack"
                     class="p-2 hover:bg-neutral-900 w-min rounded-full"
                 >
                     <ArrowLeftIcon class="w-4 h-4" />
-                </Link>
+                </button>
             </div>
 
             <AppTweetComposer

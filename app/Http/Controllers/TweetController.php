@@ -13,7 +13,9 @@ class TweetController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Tweet::class, 'tweet');
+        $this->authorizeResource(Tweet::class, 'tweet', [
+            'except' => ['show']
+        ]);
     }
 
     /**
@@ -67,7 +69,7 @@ class TweetController extends Controller
         abort_unless($tweet->user_id === $user->id, 404, 'This tweet does not exists');
 
         return Inertia::render('Tweet/TweetPage', [
-            'tweet' => $tweet,
+            'tweet' => $tweet->load('replies'),
         ]);
     }
 
@@ -82,5 +84,17 @@ class TweetController extends Controller
         $tweet->deleteOrFail();
 
         return redirect()->back();
+    }
+
+    public function storeReply(StoreTweetRequest $request, User $user, Tweet $tweet)
+    {
+        abort_unless($tweet->user_id === $user->id, 404, 'This tweet does not exists');
+
+        Tweet::create(array_merge($request->validated(), [
+            'user_id' => Auth::id(),
+            'parent_tweet_id' => $tweet->id,
+        ]));
+
+        return $this->show($user, $tweet);
     }
 }

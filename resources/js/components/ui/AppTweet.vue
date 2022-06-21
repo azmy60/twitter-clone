@@ -18,7 +18,7 @@ defineProps<{
         <template #side>
             <LinkedProfilePicture :user="tweet.user" />
         </template>
-        <div class="grow text-sm min-w-0">
+        <div class="flex flex-col gap-1 grow text-sm min-w-0">
             <div class="w-full flex gap-2 text-neutral-400">
                 <Link
                     :href="`/${tweet.user.username}`"
@@ -36,7 +36,18 @@ defineProps<{
                 <AppTime :datetime="tweet.created_at" class="shrink-0 mr-3" />
                 <TweetDropdown :tweet="tweet" />
             </div>
-            <p class="mt-1 text-neutral-200">{{ tweet.text }}</p>
+            <div class="text-neutral-400" v-if="tweet.parent_tweet">
+                Replying to
+                <Link
+                    class="text-sky-500 hover:underline"
+                    :href="`/${tweet.parent_tweet.user.username}`"
+                >
+                    @{{ tweet.parent_tweet.user.username }}
+                </Link>
+            </div>
+            <p class="text-neutral-200 overflow-hidden break-words">
+                {{ tweet.text }}
+            </p>
         </div>
     </TweetLayout>
 </template>

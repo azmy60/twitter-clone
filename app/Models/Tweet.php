@@ -15,7 +15,10 @@ class Tweet extends Model
 
     protected $appends = ['can_be_deleted'];
 
-    protected $with = ['user:id,name,username,profile_photo_url'];
+    protected $with = [
+        'user:id,name,username,profile_photo_url',
+        'parentTweet'
+    ];
 
     public static function all($columns = ['*'])
     {
@@ -25,6 +28,16 @@ class Tweet extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function parentTweet()
+    {
+        return $this->belongsTo(Tweet::class, 'parent_tweet_id');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Tweet::class, 'parent_tweet_id');
     }
 
     protected function canBeDeleted(): Attribute
