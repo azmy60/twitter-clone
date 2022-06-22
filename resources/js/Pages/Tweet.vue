@@ -4,10 +4,10 @@ import { ChatAltIcon } from "@heroicons/vue/outline";
 import MainLayout from "@/Layouts/MainLayout.vue";
 import LinkedProfilePicture from "@/components/ui/LinkedProfilePicture.vue";
 import AppTime from "@/components/ui/AppTime.vue";
-import AppTweet from "@/components/ui/AppTweet.vue";
+import AppTweet from "@/components/tweet/AppTweet.vue";
 import TopBar from "@/components/ui/TopBar.vue";
-import TweetDropdown from "./TweetDropdown.vue";
-import TweetReplyComposer from "./TweetReplyComposer.vue";
+import TweetDropdown from "@/components/tweet/TweetDropdown.vue";
+import TweetReplyComposer from "@/components/tweet/TweetReplyComposer.vue";
 import AppHorizontalSeparator from "@/components/ui/AppHorizontalSeparator.vue";
 import { user } from "@/inertia";
 

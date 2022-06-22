@@ -4,7 +4,6 @@ import MainLayout from "@/Layouts/MainLayout.vue";
 import AppTimeline from "@/components/ui/AppTimeline.vue";
 import AppTweetComposer from "@/components/ui/AppTweetComposer.vue";
 import AppHorizontalSeparator from "@/components/ui/AppHorizontalSeparator.vue";
-import { modalComponent } from "@/inertia";
 
 defineProps<{
     tweets: Tweet[];
@@ -21,5 +20,4 @@ defineProps<{
         <AppHorizontalSeparator />
         <AppTimeline :tweets="tweets" />
     </MainLayout>
-    <component v-if="modalComponent" :is="modalComponent" />
 </template>

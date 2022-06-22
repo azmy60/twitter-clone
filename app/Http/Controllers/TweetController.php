@@ -37,7 +37,7 @@ class TweetController extends Controller
      */
     public function create()
     {
-        Inertia::share('modal', 'Tweet/TweetComposeModal');
+        Inertia::share('modal', 'components/tweet/TweetComposeModal');
 
         return $this->index();
     }
@@ -68,7 +68,7 @@ class TweetController extends Controller
     {
         abort_unless($tweet->user_id === $user->id, 404, 'This tweet does not exists');
 
-        return Inertia::render('Tweet/TweetPage', [
+        return Inertia::render('Tweet', [
             'tweet' => $tweet->load('replies'),
         ]);
     }

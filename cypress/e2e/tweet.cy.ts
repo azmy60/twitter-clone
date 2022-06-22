@@ -78,16 +78,16 @@ describe("tweet.cy.ts", () => {
 
         cy.get("[data-testid=reply-textarea]")
             .click()
-            .type("I have no idea what the tweet is, but i reply anyway...")
+            .type("Whoa! That's intresting, but I sure don't care...")
             .get("[data-testid=reply-btn]")
             .click();
 
         cy.get("[data-testid=tweet]").contains(
-            "I have no idea what the tweet is, but i reply anyway..."
+            "Whoa! That's intresting, but I sure don't care..."
         );
 
         cy.get("[data-testid=reply-textarea]")
-            .contains("I have no idea what the tweet is, but i reply anyway...")
+            .contains("Whoa! That's intresting, but I sure don't care...")
             .should("not.exist");
     });
 

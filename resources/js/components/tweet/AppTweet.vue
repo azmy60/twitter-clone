@@ -2,7 +2,7 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import LinkedProfilePicture from "@/components/ui/LinkedProfilePicture.vue";
 import AppTime from "@/components/ui/AppTime.vue";
-import TweetDropdown from "@/Tweet/TweetDropdown.vue";
+import TweetDropdown from "./TweetDropdown.vue";
 import TweetLayout from "@/Layouts/TweetLayout.vue";
 import { Inertia } from "@inertiajs/inertia";
 

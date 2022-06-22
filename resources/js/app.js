@@ -24,17 +24,12 @@ const app = createApp({
                             .default;
                     } catch (_) {}
 
-                    try {
-                        return (await import(`./${name}.vue`)).default;
-                    } catch (_) {}
-
                     throw new Error(`Vue page ${name} is not found`);
                 } else {
                     let pages = asyncViews();
                     const importPage =
                         pages[`./Pages/${name}.vue`] ??
-                        pages[`./Pages/${name}/index.vue`] ??
-                        pages[`./${name}.vue`];
+                        pages[`./Pages/${name}/index.vue`];
 
                     return importPage().then((module) => module.default);
                 }

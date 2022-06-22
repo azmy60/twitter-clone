@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppHorizontalSeparator from "@/components/ui/AppHorizontalSeparator.vue";
-import AppTweet from "@/components/ui/AppTweet.vue";
+import AppTweet from "@/components/tweet/AppTweet.vue";
 
 defineProps<{
     tweets: Tweet[];
