@@ -9,14 +9,10 @@ describe("tweet.cy.ts", () => {
             count: 1,
             attributes: { id: userId, username },
         });
-    });
-
-    after(() => {
-        cy.refreshDatabase();
+        cy.login({ id: userId });
     });
 
     it("can post tweets from home page", () => {
-        cy.login({ id: userId });
         cy.visit("/home");
 
         cy.get("[data-testid=tweet-compose-textarea]")
@@ -33,7 +29,6 @@ describe("tweet.cy.ts", () => {
     });
 
     it("can post tweets from tweet modal", () => {
-        cy.login({ id: userId });
         cy.visit("/home");
 
         cy.get("[data-testid=nav-open-tweet-modal]").click();
@@ -52,7 +47,6 @@ describe("tweet.cy.ts", () => {
     });
 
     it("can delete tweets", () => {
-        cy.login({ id: userId });
         cy.create({
             model: "App\\Models\\Tweet",
             count: 1,
@@ -61,10 +55,63 @@ describe("tweet.cy.ts", () => {
         cy.visit("/home");
 
         cy.get("[data-testid=tweet]")
-            .find("[data-testid=menu-btn]")
+            .within(() => {
+                cy.get("[data-testid=menu-btn]")
+                    .click()
+                    .get("[data-testid=menu-delete-btn]")
+                    .click();
+            })
+            .get("[data-testid=modal-delete-btn]")
+            .click();
+
+        cy.get("[data-testid=tweet]").should("not.exist");
+    });
+
+    it("can post replies", () => {
+        const tweetId = 1;
+        cy.create({
+            model: "App\\Models\\Tweet",
+            count: 1,
+            attributes: { id: tweetId, user_id: userId },
+        });
+        cy.visit(`/${username}/status/${tweetId}`);
+
+        cy.get("[data-testid=reply-textarea]")
             .click()
-            .get("[data-testid=menu-delete-btn]")
-            .click()
+            .type("I have no idea what the tweet is, but i reply anyway...")
+            .get("[data-testid=reply-btn]")
+            .click();
+
+        cy.get("[data-testid=tweet]").contains(
+            "I have no idea what the tweet is, but i reply anyway..."
+        );
+
+        cy.get("[data-testid=reply-textarea]")
+            .contains("I have no idea what the tweet is, but i reply anyway...")
+            .should("not.exist");
+    });
+
+    it("can delete replies", () => {
+        const tweetId = 1;
+        cy.create({
+            model: "App\\Models\\Tweet",
+            count: 1,
+            attributes: { id: tweetId, user_id: userId },
+        });
+        cy.create({
+            model: "App\\Models\\Tweet",
+            count: 1,
+            attributes: { parent_tweet_id: tweetId, user_id: userId },
+        });
+        cy.visit(`/${username}/status/${tweetId}`);
+
+        cy.get("[data-testid=tweet]")
+            .within(() => {
+                cy.get("[data-testid=menu-btn]")
+                    .click()
+                    .get("[data-testid=menu-delete-btn]")
+                    .click();
+            })
             .get("[data-testid=modal-delete-btn]")
             .click();
 

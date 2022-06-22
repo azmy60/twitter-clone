@@ -4,14 +4,27 @@ import LinkedProfilePicture from "@/components/ui/LinkedProfilePicture.vue";
 import AppTime from "@/components/ui/AppTime.vue";
 import TweetDropdown from "@/Tweet/TweetDropdown.vue";
 import TweetLayout from "@/Layouts/TweetLayout.vue";
+import { Inertia } from "@inertiajs/inertia";
 
 defineProps<{
     tweet: Tweet;
 }>();
+
+function onClickTweet(tweet: Tweet) {
+    Inertia.get(
+        route("tweets.show", {
+            user: tweet.user.username,
+            tweet: tweet.id,
+        })
+    );
+}
 </script>
 
 <template>
     <TweetLayout
+        tabindex="0"
+        @keydown.enter="onClickTweet(tweet)"
+        @click="onClickTweet(tweet)"
         class="hover:bg-[#0a0a0a] hover:cursor-pointer"
         data-testid="tweet"
     >

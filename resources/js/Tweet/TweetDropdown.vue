@@ -15,6 +15,11 @@ const isDeleteModalOpened = ref(false);
 function confirmDelete() {
     Inertia.delete(route("tweets.destroy", prop.tweet.id));
 }
+
+function showDeleteModal() {
+    isDeleteModalOpened.value = true;
+    isOpened.value = false;
+}
 </script>
 
 <template>
@@ -35,7 +40,7 @@ function confirmDelete() {
         >
             <button
                 v-if="tweet.can_be_deleted"
-                @click="isDeleteModalOpened = true"
+                @click.stop="showDeleteModal"
                 class="flex p-4 gap-3 hover:bg-neutral-900"
                 data-testid="menu-delete-btn"
             >

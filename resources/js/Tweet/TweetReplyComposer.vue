@@ -60,7 +60,7 @@ function onSubmit() {
                     ref="textarea"
                     @focus="state.textareaIsFocused = true"
                     class="max-w-0 min-w-full empty:before:content-['Tweet_your_reply']"
-                    data-testid="tweet-compose-textarea"
+                    data-testid="reply-textarea"
                 />
             </div>
         </div>
@@ -75,7 +75,7 @@ function onSubmit() {
                 variant="solid-primary"
                 @click="onSubmit"
                 :disabled="invalid"
-                data-testid="submit-reply-btn"
+                data-testid="reply-btn"
             >
                 Reply
             </AppButton>

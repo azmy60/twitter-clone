@@ -78,16 +78,7 @@ const title = `${props.tweet.user.name} on Twitter: "${props.tweet.text}" / Twit
         </div>
         <AppHorizontalSeparator />
         <template v-for="reply in tweet.replies">
-            <Link
-                :href="
-                    route('tweets.show', {
-                        user: reply.user.username,
-                        tweet: reply.id,
-                    })
-                "
-            >
-                <AppTweet :tweet="reply" />
-            </Link>
+            <AppTweet :tweet="reply" />
             <AppHorizontalSeparator />
         </template>
         <div class="py-12"></div>

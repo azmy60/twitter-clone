@@ -383,6 +383,15 @@
       "DELETE"
     ]
   },
+  "tweets.reply.store": {
+    "name": "tweets.reply.store",
+    "domain": null,
+    "action": "App\\Http\\Controllers\\TweetController@storeReply",
+    "uri": "{user}/status/{tweet}",
+    "method": [
+      "POST"
+    ]
+  },
   "tweets.show": {
     "name": "tweets.show",
     "domain": null,
