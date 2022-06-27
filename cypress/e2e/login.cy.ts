@@ -19,7 +19,7 @@ describe("login.cy.ts", () => {
         cy.get("[data-testid=errorMessage]").should("be.visible");
     });
 
-    it.only("can login", () => {
+    it("can login", () => {
         cy.get("[data-testid=userIdentifier]").type(username);
         cy.get("[data-testid=next]").click();
 
