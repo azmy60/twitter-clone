@@ -21,6 +21,7 @@ function submit() {
             }
         })
         .catch((error) => {
+            userIdentifier.value = "";
             props.onFail(error.response.data.error);
         });
 }
@@ -31,7 +32,9 @@ function submit() {
         @submit.prevent="submit"
         class="grow pb-9 flex flex-col justify-center w-72 mx-auto gap-6"
     >
-        <h1 class="text-2xl font-bold">Sign in to Twitter</h1>
+        <h1 class="text-2xl font-bold md:text-3xl md:my-2">
+            Sign in to Twitter
+        </h1>
         <AppInput
             type="text"
             name="user_identifier"
@@ -56,7 +59,7 @@ function submit() {
         >
             Forgot password?
         </AppButton>
-        <p class="text-sm text-neutral-400">
+        <p class="text-sm text-neutral-400 md:mt-6 md:mb-8">
             Don't have an account?
             <Link
                 :href="route('register')"

@@ -19,9 +19,9 @@ function submit() {
 <template>
     <form
         @submit.prevent="submit"
-        class="grow pb-7 flex flex-col gap-6 px-8 pt-6"
+        class="grow pb-7 flex flex-col gap-6 px-8 pt-2 md:px-20"
     >
-        <h1 class="text-2xl font-bold">Enter your password</h1>
+        <h1 class="text-2xl font-bold md:text-3xl">Enter your password</h1>
         <AppInput
             type="text"
             name="user_identifier"
@@ -41,7 +41,7 @@ function submit() {
                 Forgot password?
             </AppLink>
         </div>
-        <div class="flex flex-col justify-end grow gap-6">
+        <div class="md:mt-40 flex flex-col justify-end grow gap-6">
             <AppButton
                 type="submit"
                 variant="solid-secondary"

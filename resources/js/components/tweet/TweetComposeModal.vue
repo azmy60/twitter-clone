@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import AppTweetComposer from "@/components/ui/AppTweetComposer.vue";
 import { ArrowLeftIcon } from "@heroicons/vue/outline";
-import { Link } from "@inertiajs/inertia-vue3";
 import { onMounted, onUnmounted, ref } from "vue";
+import { goBack } from "@/helpers";
 
 const mounted = ref(false);
 
@@ -18,10 +18,6 @@ onUnmounted(() => {
     mounted.value = false;
     document.body.style.overflow = bodyOverflow;
 });
-
-function goBack() {
-    window.history.back();
-}
 </script>
 
 <template>

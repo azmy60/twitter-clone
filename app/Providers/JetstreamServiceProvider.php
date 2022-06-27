@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 use Laravel\Fortify\Fortify;
 use Laravel\Jetstream\Jetstream;
 
@@ -32,6 +33,12 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
+
+        Fortify::loginView(function () {
+            Inertia::share('modal', 'components/login/LoginModal');
+
+            return Inertia::render('Welcome');
+        });
 
         Fortify::authenticateUsing(function (Request $request) {
             $user = User::whereIdentifier($request->user_identifier)->first();

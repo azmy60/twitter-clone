@@ -2,6 +2,7 @@
 import TwitterMark from "@/components/logo/TwitterMark.vue";
 import AppButton from "@/components/ui/AppButton.vue";
 import { Head } from "@inertiajs/inertia-vue3";
+import { modalComponent } from "@/inertia";
 </script>
 
 <template>
@@ -55,4 +56,5 @@ import { Head } from "@inertiajs/inertia-vue3";
         </div>
     </div>
     <div class="py-8 lg:hidden"></div>
+    <component v-if="modalComponent" :is="modalComponent" />
 </template>
