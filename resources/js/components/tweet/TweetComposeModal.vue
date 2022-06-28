@@ -1,29 +1,19 @@
 <script setup lang="ts">
 import AppTweetComposer from "@/components/ui/AppTweetComposer.vue";
+import AppModal from "@/components/ui/AppModal.vue";
 import { ArrowLeftIcon } from "@heroicons/vue/outline";
 import { onMounted, onUnmounted, ref } from "vue";
 import { goBack } from "@/helpers";
 
 const mounted = ref(false);
-
-let bodyOverflow = "";
-
-onMounted(() => {
-    mounted.value = true;
-    bodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-});
-
-onUnmounted(() => {
-    mounted.value = false;
-    document.body.style.overflow = bodyOverflow;
-});
+onMounted(() => (mounted.value = true));
+onUnmounted(() => (mounted.value = false));
 </script>
 
 <template>
-    <Teleport to="body">
+    <AppModal>
         <div
-            class="absolute inset-0 bg-black z-10"
+            class="relative w-screen h-screen bg-black md:rounded-2xl md:max-w-xl md:h-auto"
             data-testid="tweet-compose-modal"
         >
             <div
@@ -44,5 +34,5 @@ onUnmounted(() => {
                 teleportTweetTo="#compose-modal-top"
             />
         </div>
-    </Teleport>
+    </AppModal>
 </template>

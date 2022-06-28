@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppButton from "@/components/ui/AppButton.vue";
+import AppModal from "@/components/ui/AppModal.vue";
 
 defineEmits<{
     (e: "delete"): void;
@@ -8,9 +9,7 @@ defineEmits<{
 </script>
 
 <template>
-    <div
-        class="absolute grid place-content-center inset-0 bg-slate-600 bg-opacity-50"
-    >
+    <AppModal>
         <div class="flex flex-col rounded-2xl w-80 p-7 bg-black">
             <h2 class="text-xl font-bold">Delete Tweet?</h2>
             <p class="mt-1.5 text-sm text-neutral-400">
@@ -38,5 +37,5 @@ defineEmits<{
                 Cancel
             </AppButton>
         </div>
-    </div>
+    </AppModal>
 </template>
