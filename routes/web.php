@@ -51,4 +51,4 @@ Route::get('/{username}', function ($username) {
         'user_profile' => $user,
         'tweets' => $user->tweets,
     ]);
-});
+})->name('users.index');

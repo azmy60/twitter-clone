@@ -86,7 +86,7 @@
     "name": null,
     "domain": null,
     "action": "Closure",
-    "uri": "{username}",
+    "uri": "/",
     "method": [
       "GET",
       "HEAD"
@@ -397,6 +397,16 @@
     "domain": null,
     "action": "App\\Http\\Controllers\\TweetController@show",
     "uri": "{user}/status/{tweet}",
+    "method": [
+      "GET",
+      "HEAD"
+    ]
+  },
+  "users.index": {
+    "name": "users.index",
+    "domain": null,
+    "action": "Closure",
+    "uri": "{username}",
     "method": [
       "GET",
       "HEAD"

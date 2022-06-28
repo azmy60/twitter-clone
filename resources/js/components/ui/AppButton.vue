@@ -39,7 +39,7 @@ defineProps<{
             'bg-transparent text-white border border-slate-500':
                 variant === 'outline-secondary',
         }"
-        class="flex justify-center px-4 rounded-full font-bold h-min"
+        class="flex justify-center text-center px-4 rounded-full font-bold h-min"
     >
         <slot />
     </component>

@@ -31,7 +31,7 @@ describe("tweet.cy.ts", () => {
     it("can post tweets from tweet modal", () => {
         cy.visit("/home");
 
-        cy.get("[data-testid=nav-open-tweet-modal]").click();
+        cy.get("[data-testid=nav-open-tweet-modal]:visible").click();
 
         cy.get("[data-testid=tweet-compose-modal]")
             .find("[data-testid=tweet-compose-textarea]")
