@@ -34,9 +34,13 @@ class JetstreamServiceProvider extends ServiceProvider
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
 
+        Fortify::registerView(function () {
+            Inertia::share('modal', 'components/register/RegisterModal');
+            return Inertia::render('Welcome');
+        });
+
         Fortify::loginView(function () {
             Inertia::share('modal', 'components/login/LoginModal');
-
             return Inertia::render('Welcome');
         });
 

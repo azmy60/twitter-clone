@@ -46,7 +46,7 @@ function onDateInputChange(dateString: string) {
         @submit.prevent="onSubmit"
         class="grow pb-7 flex flex-col gap-6 px-8 pt-6"
     >
-        <h2 class="text-2xl font-bold">Create your account</h2>
+        <h2 class="text-2xl font-bold md:text-3xl">Create your account</h2>
         <AppInput
             placeholder="Name"
             v-model="form.name"
@@ -64,7 +64,7 @@ function onDateInputChange(dateString: string) {
                 data-testid="email"
             />
         </AppInputWrapper>
-        <div class="mt-9">
+        <div class="mt-9 md:mt-6">
             <h2 class="font-bold">Date of birth</h2>
             <p class="text-sm text-neutral-500">
                 This will not be shown publicly. Confirm your own age, even if
@@ -72,7 +72,7 @@ function onDateInputChange(dateString: string) {
             </p>
             <AppDateInput :onChange="onDateInputChange" />
         </div>
-        <div class="flex flex-col grow justify-end">
+        <div class="flex flex-col grow justify-end md:mt-10">
             <AppButton
                 type="submit"
                 size="lg"
