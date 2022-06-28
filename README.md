@@ -14,6 +14,10 @@ Laravel 9 + Inertia.js + Vue 3 + TailwindCSS
 - [ ] Follows & Likes
 - [ ] Retweets
 
+## Running the App
+
+This project uses vite as the front-end build tool. You can start a vite server by running `npx vite` in command line, and then run the php server with `php artisan serve`.
+
 ## Testing
 
 There are 2 testing tools used in this repo, PHPUnit and Cypress.
