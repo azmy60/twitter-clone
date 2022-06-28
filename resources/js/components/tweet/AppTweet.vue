@@ -35,12 +35,14 @@ function onClickTweet(tweet: Tweet) {
             <div class="w-full flex gap-2 text-neutral-400">
                 <Link
                     :href="`/${tweet.user.username}`"
+                    @click.stop
                     class="overflow-hidden whitespace-nowrap text-ellipsis font-bold hover:underline text-neutral-200"
                 >
                     {{ tweet.user.name }}
                 </Link>
                 <Link
                     :href="`/${tweet.user.username}`"
+                    @click.stop
                     class="min-w-[3rem] overflow-hidden whitespace-nowrap text-ellipsis"
                 >
                     @{{ tweet.user.username }}
@@ -54,6 +56,7 @@ function onClickTweet(tweet: Tweet) {
                 <Link
                     class="text-sky-500 hover:underline"
                     :href="`/${tweet.parent_tweet.user.username}`"
+                    @click.stop
                 >
                     @{{ tweet.parent_tweet.user.username }}
                 </Link>
