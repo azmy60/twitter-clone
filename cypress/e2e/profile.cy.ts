@@ -3,15 +3,12 @@ describe("profile.cy.ts", () => {
     const username = "azmy60";
 
     before(() => {
+        cy.refreshDatabase();
         cy.create("App\\Models\\User", { id: userId, username });
         cy.create({
             model: "App\\Models\\Tweet",
             attributes: { user_id: userId },
         });
-    });
-
-    after(() => {
-        cy.refreshDatabase();
     });
 
     it("shows tweets from the user", () => {

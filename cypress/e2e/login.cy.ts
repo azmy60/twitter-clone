@@ -2,11 +2,8 @@ describe("login.cy.ts", () => {
     const username = "azmy60";
 
     before(() => {
-        cy.create("App\\Models\\User", { username });
-    });
-
-    after(() => {
         cy.refreshDatabase();
+        cy.create("App\\Models\\User", { username });
     });
 
     beforeEach(() => {

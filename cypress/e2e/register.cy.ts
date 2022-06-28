@@ -1,4 +1,8 @@
 describe("register.cy.ts", () => {
+    before(() => {
+        cy.refreshDatabase();
+    });
+
     it("can register", () => {
         cy.visit("/register");
 
@@ -7,8 +11,6 @@ describe("register.cy.ts", () => {
         fillUsernameForm();
 
         cy.url().should("include", "home");
-
-        cy.refreshDatabase();
     });
 
     function fillPersonalInfoForm() {

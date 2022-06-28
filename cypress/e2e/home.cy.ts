@@ -1,13 +1,10 @@
 describe("home.cy.ts", () => {
     before(() => {
+        cy.refreshDatabase();
         cy.create({
             model: "App\\Models\\Tweet",
             count: 3,
         });
-    });
-
-    after(() => {
-        cy.refreshDatabase();
     });
 
     it("shows tweets from all users", () => {
